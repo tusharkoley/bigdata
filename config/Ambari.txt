@@ -1,0 +1,182 @@
+
+
+/etc/init.d/apparmor stop
+https://docs.cloudera.com/HDPDocuments/Ambari-2.7.3.0/administering-ambari/content/amb_download_the_ambari_repository_on_ubuntu_18.html
+
+vi /etc/apt/sources.list.d/ambari.list
+[trusted=yes]
+
+apt-get install ambari-server
+hadoop
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+
+vi etc/environment
+
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$JAVA_HOME/bin"
+
+
+https://www.youtube.com/watch?v=KgungC9I6XM
+
+https://docs.cloudera.com/HDPDocuments/Ambari-2.7.3.0/administering-ambari/content/amb_install_the_ambari_agents_manually_on_ubuntu_18.html
+
+
+
+#keysdir=/var/lib/ambari-agent/keys
+#server_crt=ca.crt
+#passphrase_env_var_name=AMBARI_PASSPHRASE
+#ssl_verify_cert=0
+#credential_lib_dir=/var/lib/ambari-agent/cred/lib
+#credential_conf_dir=/var/lib/ambari-agent/cred/conf
+credential_shell_cmd=org.apache.hadoop.security.alias.CredentialShell
+
+ip-172-31-16-55.ap-south-1.compute.internal
+
+ambari-server setup --jdbc-db=postgres --jdbc-driver=org.postgresql.Driver
+
+ ambari-server setup --jdbc-db=postgres --jdbc-driver=./postgresql-42.2.12.jar
+
+ jdbc:postgresql://13.234.112.244:5432/hive
+
+
+ ec2-3-6-38-63.ap-south-1.compute.amazonaws.com
+ ec2-13-233-107-46.ap-south-1.compute.amazonaws.com
+ ec2-13-233-75-239.ap-south-1.compute.amazonaws.com
+ ec2-13-233-190-156.ap-south-1.compute.amazonaws.com
+
+Public 
+3.6.38.63 ec2-3-6-38-63.ap-south-1.compute.amazonaws.com
+13.233.107.46 ec2-13-233-107-46.ap-south-1.compute.amazonaws.com
+13.233.75.239 ec2-13-233-75-239.ap-south-1.compute.amazonaws.com
+13.233.190.156 ec2-13-233-190-156.ap-south-1.compute.amazonaws.com
+
+private 
+
+ip-172-31-16-48.ap-south-1.compute.internal
+ip-172-31-31-163.ap-south-1.compute.internal 
+ip-172-31-30-136.ap-south-1.compute.internal
+ip-172-31-16-55.ap-south-1.compute.internal
+
+/usr/bin/apt-get -o Dpkg::Options::=--force-confdef --allow-unauthenticated --assume-yes install hadoop-3-1-4-0-315-client
+
+ec2-13-233-245-22.ap-south-1.compute.amazonaws.com:30800
+
+
+
+
+************ Map  Reduce Jobs ******
+sudo apt install python-pip
+
+pip install mrjob
+
+python RatingsBreakdown.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/tushar/u.data 
+
+
+
+ hdfs:///user/tushar/tmp/mrjob/RatingsBreakdown.tushar.20200423.170349.959714/files/wd...
+Copying other local files to hdfs:///user/tushar/tmp/mrjob/RatingsBreakdown.tushar.20200423.170349.959714/files/
+
+
+
+python WordPercentCnt.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/tushar/test.txt
+
+
+Spark 
+
+https://spark.apache.org/docs/latest/cluster-overview.html
+
+9000
+ec2-13-233-55-136.ap-south-1.compute.amazonaws.com:9000
+
+telnet  ec2-13-233-55-136.ap-south-1.compute.amazonaws.com  8020
+
+
+
+
+data2 - ec2-13-127-196-198.ap-south-1.compute.amazonaws.com
+data3 - ec2-13-235-210-53.ap-south-1.compute.amazonaws.com
+
+Private - 
+ip-172-31-35-117.ap-south-1.compute.internal
+ip-172-31-34-250.ap-south-1.compute.internal
+
+ec2-35-154-84-137.ap-south-1.compute.amazonaws.com:50070
+
+
+export SPARK_HOME='/Users/tushar/Desktop/Hadoop/spark/spark'
+export PATH=$SPARK_HOME:$PATH
+export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+
+
+*****
+Kerberos Realm – WW_UBUNTUBOX.COM
+Hostname for the KDC Server – ww.kdc.ubuntubox.com
+Hostname of Admin server – ww.kdc.ubuntubox.com
+
+
+kdc = sandbox.hartonworks.com:88
+
+HORTONWORKS.COM
+
+sandbox.hartonworks.com
+
+ kadmin.local -q "addprinc root/admin"
+
+[realms]
+  HORTONWORKS.COM = {
+  kdc = sandbox.hartonworks.com
+  admin_server = sandbox.hartonworks.com
+
+ }
+
+[domain_realm]
+ .hartonworks.com = HORTONWORKS.COM
+ hartonworks.com = HORTONWORKS.COM
+
+ ip-172-31-32-103.ap-south-1.compute.internal
+
+ admin/admin@HORTONWORKS.COM
+ admin/admin@HORTONWORKS.COM
+
+ ip-172-31-22-184.ap-south-1.compute.internal
+ ip-172-31-29-143.ap-south-1.compute.internal
+ ip-172-31-39-52.ap-south-1.compute.internal
+ ip-172-31-34-250.ap-south-1.compute.internal
+
+ sudo apt-get purge hadoop*
+ sudo rm -r -f /usr/local/hadoop/
+
+ sudo chown -R hadoopuser:hadoop hadoop
+
+rm -rf /var/lib/h*
+rm -rf /var/lib/spark2
+rm -rf /hadoop
+rm -rf /etc/hadoop
+rm -rf /var/log/hadoop
+rm -rf /usr/lib/ams-hbase
+rm -rf /usr/bin/hadoop
+
+deluser zookeeper
+deluser hdfs
+deluser ams
+deluser hadoop
+deluser ambari-qa
+
+SY700709B
+
+sandbox-hdp.hortonworks.com
+
+kinit -S kadmin/sandbox-hdp.hortonworks.com@HADOOP.COM admin/admin@HADOOP.COM
+
+ yum install krb5-server krb5-libs krb5-workstation
+
+ yum remove krb5-server krb5-libs krb5-workstation
+
+ vi /etc/krb5.conf
+
+ 
+ [domain_realm]
+    .hadoop.com = HADOOP.COM
+    hadoop.com = HADOOP.COM

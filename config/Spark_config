@@ -1,0 +1,10 @@
+
+
+export SPARK_HOME='/Users/tushar/Desktop/Hadoop/spark/spark'
+export PATH=$SPARK_HOME:$PATH
+export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+
+./spark-shell --conf spark.eventLog.enabled=true --conf spark.eventLog.dir=/Users/tushar/Desktop/Hadoop/spark/eventLogging
+
+
+./pyspark --conf spark.eventLog.enabled=true --conf spark.eventLog.dir=/Users/tushar/Desktop/Hadoop/spark/eventLogging

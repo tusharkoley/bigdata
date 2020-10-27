@@ -1,0 +1,10 @@
+Ho to Get the temporaty root password 
+
+systemctl stop mysqld
+systemctl set-environment MYSQLD_OPTS="--skip-grant-tables
+systemctl start mysqld
+
+UPDATE mysql.user SET authentication_string = PASSWORD('hadoop') WHERE User='root' AND Host ='localhost';
+
+FLUSH PRIVILEGES;
+systemctl unset-environment MYSQLD_OPTS
