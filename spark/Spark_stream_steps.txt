@@ -1,0 +1,55 @@
+
+
+*******Spark Assignment Steps **********
+
+download the data set and run appropriate program by spark submit
+
+******Spark Stream Assignment Steps ***********
+
+***Event logging Reading ***
+
+Run SparkEventLogReading.py
+
+
+**** Spart EVent Streaming Steps ******
+
+1) Create a folder called eventLoging in the /home/maria_dev
+2) modify spark-defaults.conf inside /usr/hdp/2.6.5.0-292/spark2/conf and add a line with follwing value
+spark.eventLog.enabled true
+spark.eventLog.dir /home/maria_dev/eventLogging
+
+3) Create two kafka topics spark_event and spark_event_out from kafka broker.
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic spark_event
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic spark_event_out
+
+4) Create kafka producer that tails the event log and sends the messaage in topic
+tail -n0 -F  /home/maria_dev/eventLogging/local-*.inprogress | bin/kafka-console-producer.sh --broker-list  ​sandbox-hdp.hortonworks.com:6667 --topic spark_event
+
+5) Open anorther shell window to check the output topic 
+ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic spark_event_out --from-beginning
+
+6) download the spark streaming jar spark-streaming-kafka-0-8-assembly_2.11-2.3.0.jar from mvn site.
+
+7) submit the spark job with the floowiing commands
+
+spark-submit --jars spark-streaming-kafka-0-8-assembly_2.11-2.3.0.jar spark-kafka.py 
+
+8) open another pyspark sheel window and run the follwing cooemnads 
+
+data = [1, 2, 3, 4, 5]
+distData = sc.parallelize(data)
+distData.collect()
+
+you should see the output in the output topic. 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+
+1. Login to mysql Create movielens database
+2. Give required access to mysql movielens schema
+grant all privileges on movielens.* to ''@'localhost' 
+3. Execute Sqoop Import command as follows 
+sqoop import --connect jdbc:mysql://localhost/movielens --driver com.mysql.jdbc.Driver --table movies -m 1
+
+4. Verify that movie folder is created under /user/<your_user> directory under hdfs
+
+****Sqoop Import ****
+
+
+
+  sqoop import --connect jdbc:mysql://localhost/movielens --driver com.mysql.jdbc.Driver --table movies -m 1
+
+
+****Sqoop Export ****
+
+  CREATE TABLE exported_movie (id INTEGER, title VARCHAR(255), releaseDate DATE);
+
+sqoop export --connect jdbc:mysql://localhost/movielens --driver com.mysql.jdbc.Driver  -m 1 --table exported_movie --export-dir /apps/hive/warehouse/movies --input-fields-terminated-by '\0001'
+
+

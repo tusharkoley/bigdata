@@ -1,0 +1,24 @@
+********* Flume Assignment ***
+Follow this link
+
+https://programming.vip/docs/quasi-real-time-extraction-of-mysql-table-data-to-hdfs-using-flume.html
+
+
+
+
+CREATE EXTERNAL TABLE ext_wlslog
+(id         int,
+ time_stamp STRING,
+ category   STRING,
+ type       STRING,
+ servername STRING,
+ code       STRING,
+ msg        STRING
+) 
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+   "separatorChar" = "\,",
+   "quoteChar"     = "\""
+) 
+STORED AS TEXTFILE 
+location '/flume/mysql' ; 

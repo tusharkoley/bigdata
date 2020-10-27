@@ -1,0 +1,13 @@
+1) login to sandbox 
+2) downlaod the sample file by wget 
+$ wget https://s3.amazonaws.com/files.dezyre.com/hadoop_page1.0/assignments/hive/NASDAQ_dividends_A.csv
+
+$ wget https://s3.amazonaws.com/files.dezyre.com/hadoop_page1.0/assignments/hive/NASDAQ_daily_prices_A_sample.csv
+3) Create a dictory nasdaq under /user/tushar
+
+$hdfs dfs -mkdir /user/tushar/nasdaq
+
+4) copy the files into the /user/tushar/nasdaq directory
+
+5) Run the sacripts in Hive-assignments.sql 
+

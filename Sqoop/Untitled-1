@@ -1,0 +1,44 @@
+
+
+
+
+df_02 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2002.txt.gz');
+df_03 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2003.txt.gz');
+df_04 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2004.txt.gz');
+df_05 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2005.txt.gz');
+df_06 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2006.txt.gz');
+df_07 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2007.txt.gz');
+df_08 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2008.txt.gz');
+df_09 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2009.txt.gz');
+df_10 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2010.txt.gz');
+df_11 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2011.txt.gz');
+df_12 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2012.txt.gz');
+df_13 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2013.txt.gz');
+df_14 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2014.txt.gz');
+df_15 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2015.txt.gz');
+df_16 = spark.read.format('text').schema(schema).load('/public/nyse_data/NYSE_2016.txt.gz');
+df_17 = spark.read.format('gzip').schema(schema).load('/public/nyse_data/NYSE_2017.txt.gz');
+
+
+
+dtype = [ StructField ('sym', StringType(),True),StructField ('date', StringType(),True),StructField ('open', StringType(),True),StructField ('close', StringType(),True),StructField ('high', StringType(),True),StructField ('low', StringType(),True),StructField ('volume', StringType(),True)]
+
+schema = StructType(dtype)
+
+
+hdfs dfs -mkdir /user/tushar/spark_practice/problem1/data/nyse_count
+
+
+df_pd.columns = [ 'stockticker', 'tradedate', 'openprice', 'highprice', 'lowprice', 'closeprice', 'volume']
+
+
+9702554835-
+
+Ac- 
+Chimney - 
+Sofa - 
+
+
+Dining Table - 
+
+Washing 

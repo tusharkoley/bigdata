@@ -1,0 +1,43 @@
+
+ata type customer - id, name, city, income
+data type orders - id, costomer_id, delivery_addr, order_amount
+
+perform the follwing action -
+
+1) load order and custmore data from two csv (create sample csv files)
+
+
+2) find the average customer income by city
+3) join the two data by customer id and display custmore_name, delivery_addr, total order amount
+
+
+
+Customers.csv
+
+1, Kishor Paul, London, 10000
+2, John Paul, New York, 12000
+3, Paul Rodger, LA, 13000
+4, David Dev, London, 20000
+5, Nancy Dev, LA, 20000
+
+Orders.csv 
+
+1, 2, London, 20
+2, 2, London, 40
+3, 1, LA, 30
+4, 1, New york, 50
+5, 4, London, 45
+6, 4, London, 60
+
+$ pig -x local
+grunt>
+customer = LOAD 'customer.csv' USING PigStorage(',') AS (cust_id:int, name:chararray,  city:chararray,  income:int); -- loading customer data;
+
+orders = LOAD 'orders.csv' USING PigStorage(',') AS (ord_id:int, custid:int,  delivery_addr:chararray,  order_amount:int);
+
+cust_grp = GROUP customer BY city;
+
+ cust_avg_by_city = FOREACH cust_grp GENERATE group, SUM(customer.income)/COUNT(customer.income) AS avg;
+dump cust_avg_by_city;
+
+cust_ord = JOIN customer by cust_id, orders by cust_id;

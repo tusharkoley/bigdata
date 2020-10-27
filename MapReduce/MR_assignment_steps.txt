@@ -1,0 +1,6 @@
+1) intalll python mrjob 
+pip install mrjob
+
+2) run the program as below 
+
+python word-percent.py login.txt
